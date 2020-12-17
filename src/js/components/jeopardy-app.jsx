@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import CreateClones from './deep-clones';
 
-// import jeopardyBoard from '../../data/board1';
-import jeopardyBoard from '../../data/boardFinal';
+import jeopardyBoard from '../../data/boardTemplate';
 
 const JeopardyContext = React.createContext();
 

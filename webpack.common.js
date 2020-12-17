@@ -11,7 +11,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Jeopardy App' 
+      title: 'Jeopardy App',
       template: './src/html/react-index.html',
       filename: 'index.html',
     }),
