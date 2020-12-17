@@ -1,0 +1,300 @@
+@use 'common-style' as common;
+
+body {
+  overflow-x: hidden;
+}
+
+%jeopardy-font-style {
+  color: common.$color-white-jeopardy;
+  font-weight: map-get(common.$map-font-weight, 'bold-2x');
+  text-shadow: 7px 7px 0 common.$color-black-jeopardy;
+}
+
+.c-jeopardy {
+  // @extend %jeopardy-font-style;
+
+  flex: 1;
+  display: flex;
+
+  background: common.$color-black-jeopardy;
+  padding: common.$pad-sm;
+
+  > * + * {
+    margin-left: common.$margin-sm;
+  }
+
+  &__category-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    > * + * {
+      margin-top: common.$margin-sm;
+    }
+  }
+
+  &__column-card {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: common.$color-blue-jeopardy;
+    cursor: pointer;
+    font-family: common.$font-face;
+
+    &--fg-white {
+      color: common.$color-white-jeopardy;
+    }
+
+    &--fg-yellow {
+      color: common.$color-yellow-jeopardy;
+    }
+  }
+
+  &--font-white {
+    color: common.$color-white-jeopardy;
+  }
+
+  &--font-yellow {
+    color: common.$color-yellow-jeopardy;
+  }
+
+  &--font-sm {
+    font-size: 30px;
+    font-weight: map-get(common.$map-font-weight, 'bold-2x');
+    text-shadow: 3px 3px 0 common.$color-black-jeopardy;
+  }
+
+  &--font-lg {
+    font-size: 80px;
+    font-weight: map-get(common.$map-font-weight, 'bold-2x');
+    text-shadow: 7px 7px 0 common.$color-black-jeopardy;
+  }
+}
+
+.c-slide-card {
+  @extend %jeopardy-font-style;
+
+  position: absolute;
+  left: 100vw;
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+
+  background: common.$color-blue-jeopardy;
+
+  transition-duration: 0.7s;
+  // transition-timing-function: ease-in-out;
+  transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  transition-property: transform;
+
+  &__controls {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+
+    // background: black;
+    // opacity: 0.1;
+
+    padding: 0 3rem;
+  }
+
+  &__body {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 80px;
+    padding: 0.5em;
+  }
+
+  &__close {
+    background: transparent;
+    border: 0;
+    color: common.$color-white-jeopardy;
+    cursor: pointer;
+    font-size: 3rem;
+  }
+
+  &__button {
+    background: transparent;
+    border: 1px solid common.$color-white-jeopardy;
+    border-radius: 4px;
+    color: common.$color-white-jeopardy;
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+
+  &--slide-in {
+    transform: translate(-100vw, 0);
+  }
+}
+
+.c-slide-card-2 {
+  position: absolute;
+  left: 100vw;
+  top: 0;
+
+  //NOTE: this is for sliding the card left & right
+  transition-duration: 0.7s;
+  // transition-timing-function: ease-in-out;
+  transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  transition-property: transform;
+
+  &__nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+
+    // padding: map-get(common.$map-pad, 'md');
+    padding: 0.5rem 3rem;
+
+    // //TEST:: delete later
+    // background: black;
+    // opacity: 0.5;
+  }
+
+  &__content {
+    @extend %jeopardy-font-style;
+
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: common.$color-blue-jeopardy;
+    // transform-style: preserve-3d;
+
+    // transition-duration: 1.5s;
+    // // transition-timing-function: ease-in-out;
+    // transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    // transition-property: transform;
+  }
+
+  &__close {
+    background: transparent;
+    border: 0;
+    border-radius: 12px;
+    color: common.$color-white-jeopardy;
+    cursor: pointer;
+    font-size: 3rem;
+
+    &:hover {
+      background: common.$color-white-jeopardy;
+      color: common.$color-blue-jeopardy;
+    }
+  }
+
+  &__button {
+    background: transparent;
+    border-radius: 12px;
+    color: common.$color-white-jeopardy;
+    cursor: pointer;
+    outline: 0;
+
+    &:hover {
+      background: common.$color-white-jeopardy;
+      color: common.$color-blue-jeopardy;
+    }
+
+    &--regular {
+      border: 1px solid common.$color-white-jeopardy;
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin: 0.5rem;
+    }
+
+    &--close {
+      height: 4rem;
+      width: 4rem;
+
+      display: grid;
+      place-items: center;
+
+      border: 0;
+      font-size: 3rem;
+    }
+  }
+
+  &__flip-container {
+    height: 70%;
+    width: 70%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 10px 10px hsla(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+
+    transition-duration: 1.5s;
+    // transition-timing-function: ease-in-out;
+    transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    transition-property: transform;
+
+    &--flip {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__flip-content {
+    position: absolute;
+    -webkit-backface-visibility: hidden; /* for Safari */
+    backface-visibility: hidden;
+
+    height: 100%;
+    width: 100%;
+    // overflow: scroll;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    // background: hsla(0, 100%, 100%, 0.5);
+    font-size: 60px;
+    font-weight: map-get(common.$map-font-weight, 'bold-2x');
+    padding: common.$pad-lg;
+    text-shadow: 7px 7px 0 common.$color-black-jeopardy;
+
+    &--back-side {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &--slide-in {
+    transform: translate(-100vw, 0);
+  }
+
+  &--font-sm {
+    font-size: 30px;
+    font-weight: map-get(common.$map-font-weight, 'bold-2x');
+    text-shadow: 3px 3px 0 common.$color-black-jeopardy;
+  }
+
+  &--font-lg {
+    font-size: 80px;
+    font-weight: map-get(common.$map-font-weight, 'bold-2x');
+    text-shadow: 7px 7px 0 common.$color-black-jeopardy;
+  }
+}

@@ -1,0 +1,645 @@
+/*
+Source: https://dribbble.com/shots/13912062-Collab-Landing-Page-Kit/attachments/5521095?mode=media
+*/
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600&display=swap');
+
+//Source: jeopardy game
+$color-white-jeopardy: #edfbfe;
+$color-black-jeopardy: #010013;
+$color-yellow-jeopardy: #ffcd9b;
+$color-blue-jeopardy: #2d0ec5;
+
+$map-color: (
+  'white': $color-white-jeopardy,
+  'black': $color-black-jeopardy,
+  'yellow': $color-yellow-jeopardy,
+  'blue': $color-blue-jeopardy
+);
+
+$font-face: Helvetica, sans-serif;
+$font-size-base: 8px;
+$font-size-sm-x: $font-size-base * 4/3;
+$font-size-sm: $font-size-base * 2;
+$font-size-md: $font-size-base * 3;
+$font-size-lg: $font-size-base * 4;
+
+$font-weight-thin-3x: 100;
+$font-weight-thin-2x: 200;
+$font-weight-thin: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 500;
+$font-weight-bold-2x: 600;
+
+$map-font-weight: (
+  'thin-3x': $font-weight-thin-3x,
+  'thin-2x': $font-weight-thin-2x,
+  'thin': $font-weight-thin,
+  'normal': $font-weight-normal,
+  'bold': $font-weight-bold,
+  'bold-2x': $font-weight-bold-2x
+);
+
+$margin-base: 8px;
+$margin-sm: 8px;
+$margin-md: 16px;
+$margin-lg: 24px;
+
+$pad-base: 8px;
+$pad-sm: 8px;
+$pad-md: 16px;
+$pad-lg: 24px;
+
+$map-margin: (
+  'sm': $margin-sm,
+  'md': $margin-md,
+  'lg': $margin-lg
+);
+
+$map-pad: (
+  'sm': $pad-sm,
+  'md': $pad-md,
+  'lg': $pad-lg
+);
+
+$border-radius-base: 4px;
+
+* {
+  font-family: $font-face;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+// Utility-first CSS
+
+//utility: positioning
+.u-pos-relative {
+  position: relative;
+}
+
+//create templates for all widths and height percentages
+$i: 10;
+@while $i <= 100 {
+  %width-#{$i}\% {
+    width: #{$i}#{'%'};
+  }
+
+  %height-#{$i}\% {
+    height: #{$i}#{'%'};
+  }
+
+  %o-exact-width-#{$i}\% {
+    width: #{$i}#{'%'};
+    min-width: #{$i}#{'%'};
+  }
+
+  $i: $i + 10;
+}
+
+// create widths for 25% & 75%
+$quarter-width: 25, 75;
+@each $i in $quarter-width {
+  %width-#{$i}\% {
+    width: #{$i}#{'%'};
+  }
+
+  %height-#{$i}\% {
+    height: #{$i}#{'%'};
+  }
+}
+
+$dimensions: 10, 50, 100, 200, 250, 500, 750, 1000;
+@each $i in $dimensions {
+  .u-w-#{$i}px {
+    width: $i + px;
+  }
+
+  .u-h-#{$i}px {
+    height: $i + px;
+  }
+}
+
+//utiltiy: height
+.u-h-100vh {
+  height: 100vh;
+}
+
+.u-h-25\% {
+  @extend %height-25\%;
+}
+
+.u-h-50\% {
+  @extend %height-50\%;
+}
+
+.u-h-75\% {
+  @extend %height-75\%;
+}
+
+.u-h-100\% {
+  @extend %height-100\%;
+}
+
+//utility: width
+.u-w-25\% {
+  @extend %width-25\%;
+}
+
+.u-w-50\% {
+  @extend %width-50\%;
+}
+
+.u-w-75\% {
+  @extend %width-75\%;
+}
+
+.u-w-80\% {
+  @extend %width-80\%;
+}
+
+.u-w-90\% {
+  @extend %width-90\%;
+}
+
+.u-w-100\% {
+  @extend %width-100\%;
+}
+
+.u-w-100vw {
+  width: 100vw;
+}
+
+.u-w-max-1000px {
+  max-width: 1000px;
+}
+
+.u-w-max-1200px {
+  max-width: 1200px;
+}
+
+.u-w-max-1400px {
+  max-width: 1400px;
+}
+
+.u-w-300px {
+  width: 300px;
+}
+
+.u-h-400px {
+  height: 400px;
+}
+
+.o-exact-width-20\% {
+  @extend %o-exact-width-20\%;
+}
+
+.o-exact-width-30\% {
+  @extend %o-exact-width-30\%;
+}
+
+.o-exact-width-40\% {
+  @extend %o-exact-width-40\%;
+}
+
+//utilty: display
+.u-inline-block {
+  display: inline-block;
+}
+
+.u-inline-flex {
+  display: inline-flex;
+}
+
+.u-inline-grid {
+  display: inline-grid;
+}
+
+//utility: flexbox
+.u-flex {
+  display: flex;
+}
+
+.u-flex-col {
+  flex-direction: column;
+}
+
+.u-flex-row {
+  flex-direction: row;
+}
+
+.u-flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.u-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.u-flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.u-flex-grow {
+  flex-grow: 1;
+}
+
+.u-flex-child {
+  flex: 1;
+}
+
+.u-ai-start {
+  align-items: flex-start;
+}
+
+.u-ai-end {
+  align-items: flex-end;
+}
+
+.u-ai-center {
+  align-items: center;
+}
+
+.u-ai-stretch {
+  align-items: stretch;
+}
+
+.u-jc-start {
+  justify-content: flex-start;
+}
+
+.u-jc-end {
+  justify-content: flex-end;
+}
+
+.u-jc-center {
+  justify-content: center;
+}
+
+.u-jc-space-around {
+  justify-content: space-around;
+}
+
+.u-jc-space-evenly {
+  justify-content: space-evenly;
+}
+
+.u-jc-space-btwn {
+  justify-content: space-between;
+}
+
+.u-box-size-border {
+  box-sizing: border-box;
+}
+
+//utlity: margin
+@each $key, $val in $map-margin {
+  .u-margin-#{$key} {
+    margin: $val;
+  }
+}
+
+@for $i from 1 through 10 {
+  %margin-#{$i}x {
+    margin: $margin-base * $i;
+  }
+
+  %margin-y-#{$i}x {
+    margin-top: $margin-base * $i;
+    margin-bottom: $margin-base * $i;
+  }
+
+  %margin-top-#{$i}x {
+    margin-top: $margin-base * $i;
+  }
+
+  %margin-left-#{$i}x {
+    margin-left: $margin-base * $i;
+  }
+
+  %margin-bottom-#{$i}x {
+    margin-bottom: $margin-base * $i;
+  }
+
+  %margin-top-child-#{$i}x {
+    > * + * {
+      margin-top: $margin-base * $i;
+    }
+  }
+
+  %margin-left-child-#{$i}x {
+    > * + * {
+      margin-left: $margin-base * $i;
+    }
+  }
+}
+
+.u-margin-none {
+  margin: 0;
+}
+
+.u-margin-x-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.u-margin-y-4x {
+  @extend %margin-y-4x;
+}
+
+.u-margin-top-3x {
+  @extend %margin-top-3x;
+}
+
+.u-margin-top-6x {
+  @extend %margin-top-6x;
+}
+
+.u-margin-left-4x {
+  @extend %margin-left-4x;
+}
+
+.u-margin-left-5x {
+  @extend %margin-left-5x;
+}
+
+.u-margin-top-child-sm {
+  @extend %margin-top-child-1x;
+}
+
+.u-margin-top-child-3x {
+  @extend %margin-top-child-3x;
+}
+
+.u-margin-top-child-5x {
+  @extend %margin-top-child-5x;
+}
+
+.u-margin-left-child-sm {
+  @extend %margin-left-child-1x;
+}
+
+.u-margin-bottom-6x {
+  @extend %margin-bottom-6x;
+}
+
+//utility: padding
+@each $key, $val in $map-pad {
+  .u-pad-#{$key} {
+    padding: $val;
+  }
+}
+
+@for $i from 1 through 10 {
+  %pad-#{$i}x {
+    padding: $pad-base * $i;
+  }
+
+  %pad-x-#{$i}x {
+    padding-left: $pad-base * $i;
+    padding-right: $pad-base * $i;
+  }
+
+  %pad-y-#{$i}x {
+    padding-top: $pad-base * $i;
+    padding-bottom: $pad-base * $i;
+  }
+
+  %pad-bottom-#{$i}x {
+    padding-bottom: $pad-base * $i;
+  }
+}
+
+.u-pad-none {
+  padding: 0;
+}
+
+.u-pad-auto {
+  padding: auto;
+}
+
+.u-pad-2x {
+  @extend %pad-2x;
+}
+
+.u-pad-y-2x {
+  @extend %pad-y-2x;
+}
+
+.u-pad-y-10x {
+  @extend %pad-y-10x;
+}
+
+.u-pad-x-5x {
+  @extend %pad-x-5x;
+}
+
+.u-pad-x-auto {
+  padding-left: auto;
+  padding-right: auto;
+}
+
+.u-pad-bottom-5x {
+  @extend %pad-bottom-5x;
+}
+
+// utility: colors
+@each $key-color, $value-color in $map-color {
+  .u-bg-#{$key-color} {
+    background: $value-color;
+  }
+
+  .u-fg-#{$key-color} {
+    color: $value-color;
+  }
+
+  %border-color-#{$key-color} {
+    border-color: $value-color;
+  }
+
+  %hover-bg-#{$key-color} {
+    &:hover {
+      background: $value-color;
+    }
+  }
+
+  %hover-fg-#{$key-color} {
+    &:hover {
+      color: $value-color;
+    }
+  }
+}
+
+// Utility: borders
+$border-position: 'top', 'right', 'bottom', 'left';
+@each $pos in $border-position {
+  %border-#{$pos}-dashed {
+    border-#{$pos}-style: dashed;
+  }
+
+  %border-#{$pos}-dotted {
+    border-#{$pos}-style: dotted;
+  }
+
+  .u-border-#{$pos}-solid {
+    border-#{$pos}-style: solid;
+  }
+
+  .u-border-#{$pos}-width-1px {
+    border-#{$pos}-width: 1px;
+  }
+
+  %border-#{$pos}-width-2px {
+    border-#{$pos}-width: 2px;
+  }
+
+  %border-#{$pos}-width-3px {
+    border-#{$pos}-width: 3px;
+  }
+
+  %border-#{$pos}-width-5px {
+    border-#{$pos}-width: 5px;
+  }
+}
+
+.u-border-none {
+  border: 0;
+}
+
+.u-border-top-dotted {
+  @extend %border-top-dotted;
+}
+
+.u-border-top-width-2px {
+  @extend %border-top-width-2px;
+}
+
+.u-border-top-width-3px {
+  @extend %border-top-width-3px;
+}
+
+.u-border-bottom-dotted {
+  @extend %border-bottom-dotted;
+}
+
+.u-border-bottom-width-2px {
+  @extend %border-bottom-width-2px;
+}
+
+//utility: border-radius
+//NOTE: can not just add '%' to an array of numbers
+// $list-border-radius: 10%, 20%, 30%, 40%, 50%;
+$list-border-radius: 10, 20, 30, 40, 50;
+@each $i in $list-border-radius {
+  .u-border-radius-#{$i}\% {
+    border-radius: #{$i}#{'%'};
+  }
+
+  .u-border-radius-br-#{$i}\% {
+    border-bottom-right-radius: #{$i}#{'%'};
+  }
+}
+
+@for $i from 1 to 21 {
+  %border-radius-#{$i}x {
+    border-radius: $border-radius-base * $i;
+  }
+
+  %border-radius-br-#{$i}x {
+    border-bottom-right-radius: $border-radius-base * $i;
+  }
+}
+
+.u-border-radius-5px {
+  border-radius: 5px;
+}
+
+.u-border-radius-10px {
+  border-radius: 10px;
+}
+
+.u-border-radius-20px {
+  border-radius: 20px;
+}
+
+.u-border-radius-1x {
+  @extend %border-radius-1x;
+}
+
+.u-border-radius-br-20x {
+  @extend %border-radius-br-20x;
+}
+
+//utiltiy: font-size
+@for $i from 1 to 11 {
+  %font-size-#{$i}x {
+    font-size: $font-size-base * $i;
+  }
+}
+
+@each $key, $value in $map-font-weight {
+  .u-font-weight-#{$key} {
+    font-weight: $value;
+  }
+}
+
+.u-font-size-sm-x {
+  font-size: $font-size-sm-x;
+}
+
+.u-font-size-sm {
+  font-size: $font-size-sm;
+}
+
+.u-font-size-md {
+  font-size: $font-size-md;
+}
+
+.u-font-size-lg {
+  font-size: $font-size-lg;
+}
+
+.u-font-size-lg-x {
+  @extend %font-size-5x;
+}
+
+.u-font-size-6x {
+  @extend %font-size-6x;
+}
+
+.u-circle {
+  border-radius: 50%;
+}
+
+.u-overflow-hidden {
+  overflow: hidden;
+}
+
+.u-opacity-30\% {
+  opacity: 0.3;
+}
+
+//utility: hover
+.u-hover-opacity-50\% {
+  &:hover {
+    opacity: 50%;
+  }
+}
+
+.u-hover-cursor-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
